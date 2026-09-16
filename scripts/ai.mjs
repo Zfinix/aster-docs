@@ -54,6 +54,53 @@ writeFileSync(join(dist, 'llms-full.txt'), full.join('\n'));
 
 writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n`);
 
+// Inject llms.txt / markdown directives into every exported HTML head.
+import { readdirSync, mkdirSync } from 'node:fs';
+
+function htmlFiles(dir) {
+  const out = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...htmlFiles(p));
+    else if (entry.name === 'index.html') out.push(p);
+  }
+  return out;
+}
+
+for (const file of htmlFiles(dist)) {
+  const rel = dirname(file).slice(dist.length) || '/';
+  const slug = rel === '/' ? 'index' : rel.replace(/\/+$/, '').split('/').pop();
+  let html = readFileSync(file, 'utf8');
+  if (!html.includes('rel="llms.txt"')) {
+    const tag = `<link rel="llms.txt" href="/llms.txt"><link rel="alternate" type="text/markdown" href="/${slug}.md">`;
+    html = html.replace('</head>', `${tag}</head>`);
+    writeFileSync(file, html);
+  }
+}
+
+const wellKnown = join(dist, '.well-known');
+mkdirSync(wellKnown, { recursive: true });
+writeFileSync(
+  join(wellKnown, 'ai-plugin.json'),
+  JSON.stringify(
+    {
+      name_for_human: 'Aster Docs',
+      name_for_model: 'aster-docs',
+      description_for_human: 'Search and read the documentation for Aster, the terminal coding agent.',
+      description_for_model: 'Search and read the Aster documentation: install, configure, extend, and operate the terminal coding agent. Tools: search_docs, get_page.',
+      api: { type: 'mcp', url: `${base}/mcp` },
+      logo_url: `${base}/favicon.svg`,
+      contact_email: 'chiziaruhoma@gmail.com',
+    },
+    null,
+    2,
+  ),
+);
+writeFileSync(
+  join(wellKnown, 'mcp.json'),
+  JSON.stringify({ mcpServers: { 'aster-docs': { url: `${base}/mcp` } } }, null, 2),
+);
+
 writeFileSync(
   join(dist, 'search-index.json'),
   JSON.stringify(pages.map((p) => ({ slug: p.slug, title: p.title, desc: p.desc }))),
