@@ -78,6 +78,22 @@ for (const file of htmlFiles(dist)) {
   }
 }
 
+// Copy static brand assets into the export (mint export drops the public/ dir).
+import { cpSync } from 'node:fs';
+cpSync(join(root, 'public'), dist, { recursive: true });
+
+// Inject the navbar logo: the export renders an empty nav ul and no img.
+for (const file of htmlFiles(dist)) {
+  let html = readFileSync(file, 'utf8');
+  if (html.includes('data-component-part="navbar-logo"')) continue;
+  const img = `<img data-component-part="navbar-logo" src="/logo/light.svg" alt="Aster" class="h-8 w-auto dark:hidden" /><img data-component-part="navbar-logo" src="/logo/dark.svg" alt="Aster" class="h-8 w-auto hidden dark:block" />`;
+  html = html.replace(
+    /(<nav aria-label="Main"[^>]*><ul class="flex space-x-6 items-center"><\/ul>)/,
+    `<li class="flex items-center mr-2">${img}</li>$1`,
+  );
+  writeFileSync(file, html);
+}
+
 const wellKnown = join(dist, '.well-known');
 mkdirSync(wellKnown, { recursive: true });
 writeFileSync(

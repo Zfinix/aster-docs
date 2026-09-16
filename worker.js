@@ -89,6 +89,18 @@ export default {
       const md = await env.ASSETS.fetch(new URL(`${slug}.md`, url.origin));
       if (md.ok) return md;
     }
+    if (!isAssetPath) {
+      const res = await env.ASSETS.fetch(request);
+      if (res.ok) {
+        const html = await res.text();
+        const fixed = html
+          .replace(/https:\/\/mintlify\.mintlify\.app\/_next\/image\?url=[^"]*/g,
+            'https://docs.withaster.dev/social-card.png')
+          .replace(/https:\/\/mintlify\.mintlify\.app/g, 'https://docs.withaster.dev');
+        return new Response(fixed, res);
+      }
+      return res;
+    }
     return env.ASSETS.fetch(request);
   },
 };

@@ -9,6 +9,15 @@
     "dark": "#f2764f"
   },
   "favicon": "favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "/"
+  },
+  "og": {
+    "type": "website",
+    "image": "https://docs.withaster.dev/social-card.png"
+  },
   "navigation": {
     "groups": [
       { "group": "Start", "pages": ["index", "getting-started"] },
