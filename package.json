@@ -1,0 +1,1 @@
+{"name":"aster-docs","private":true,"type":"module","scripts":{"dev":"astro dev","build":"astro build && pagefind --site dist","preview":"astro build && pagefind --site dist && astro preview","deploy":"astro build && pagefind --site dist && wrangler deploy"},"dependencies":{"@astrojs/sitemap":"^3.7.3","astro":"^5"},"devDependencies":{"pagefind":"^1.3.0","wrangler":"^4"}}
