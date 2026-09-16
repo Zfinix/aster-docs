@@ -38,5 +38,5 @@ aster run sentinel "review yesterday's commits on main" [--notify] [--cwd DIR] [
 
 `aster run` executes one agent task and exits, `--notify` sends the result
 where the agent's config says to, and `--schedule NAME` attaches the run to a
-[schedule](/docs/schedules). `aster run --help` mentions `aster agents`; that
+[schedule](/schedules). `aster run --help` mentions `aster agents`; that
 command does not exist, the roster above is the list.

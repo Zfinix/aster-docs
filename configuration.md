@@ -55,7 +55,7 @@ key var named for it. A key var named for the endpoint (`ANTHROPIC_API_KEY`,
 
 ### `permissions`
 
-See [Permissions](/docs/permissions) for the full language.
+See [Permissions](/permissions) for the full language.
 
 ```yaml
 permissions:
@@ -79,11 +79,11 @@ agent:
 
 ### `review`
 
-See [Review](/docs/review#configuration) for every key.
+See [Review](/review#configuration) for every key.
 
 ### `mcp`
 
-See [MCP servers](/docs/mcp) for the full section.
+See [MCP servers](/mcp) for the full section.
 
 ```yaml
 mcp:
@@ -97,7 +97,7 @@ mcp:
 
 ### `schedules`
 
-See [Schedules](/docs/schedules).
+See [Schedules](/schedules).
 
 ```yaml
 schedules:
@@ -111,7 +111,7 @@ schedules:
 ### `agents`
 
 Sub-agent limits: `max_concurrent`, `max_per_turn`, `agent_timeout_secs`,
-`collector_model`. See [Sub-agents](/docs/agents).
+`collector_model`. See [Sub-agents](/agents).
 
 ### `ui`
 
@@ -138,6 +138,6 @@ Spec: `specs/mom.md` in the main repository. Logs:
 
 ## Environment variables
 
-See [Environment variables](/docs/env) for the full list. The two that
+See [Environment variables](/env) for the full list. The two that
 outrank the yaml file: `ASTER_MODEL` and `ASTER_BASE_URL`, both reported by
 `aster status` when set.

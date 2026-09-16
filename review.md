@@ -60,4 +60,4 @@ router` shows the current pick. Environment overrides: `ASTER_VERIFY_MODEL`,
 `--json` prints findings as data; exit code reflects severity, so a plain
 `aster review --json` step fails the build on a critical finding. The
 `--pr --comment` pair posts findings inline on the PR. See
-[Fix](/docs/fix) for consuming the JSON.
+[Fix](/fix) for consuming the JSON.

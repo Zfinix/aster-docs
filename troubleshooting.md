@@ -26,7 +26,7 @@ endpoint-specific var can override a fresh shared one.
 **"Command not allowed" in a script.** A permission rule reached `ask` in a
 headless run, where nothing can answer. Add an `allow` rule for it, or run with
 `--stream` and reply to approvals on stdin. See
-[Permissions](/docs/permissions#headless-runs).
+[Permissions](/permissions#headless-runs).
 
 **MCP server will not connect.** `aster mcp list --no-connect` shows the config
 without spawning. Check the command exists, the env vars it needs are set, and
@@ -40,7 +40,7 @@ import it with `aster sessions import --from …`.
 `include`/`exclude` globs, and `--no-index` to rule out the symbol index.
 `aster review --stream` shows the pipeline working stage by stage.
 
-**Model switches mid-session.** That is [mom.yaml](/docs/configuration#mom-yaml-model-routing)
+**Model switches mid-session.** That is [mom.yaml](/configuration#mom-yaml-model-routing)
 routing by intent. `/mom` shows the current state; `/mom resume` re-arms it
 after a manual `/model`.
 

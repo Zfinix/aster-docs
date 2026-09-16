@@ -90,6 +90,6 @@ Outside a repository, chat still works, with less to look at.
 
 ## What to read next
 
-- [Chat](/docs/chat): keys, slash commands, and one-shot mode.
-- [Permissions](/docs/permissions): the five modes and the rule language.
-- [Configuration](/docs/configuration): every `aster.yaml` key.
+- [Chat](/chat): keys, slash commands, and one-shot mode.
+- [Permissions](/permissions): the five modes and the rule language.
+- [Configuration](/configuration): every `aster.yaml` key.

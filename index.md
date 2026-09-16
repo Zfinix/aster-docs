@@ -35,10 +35,10 @@ run in a sandbox, and every session is saved under `~/.aster`.
 
 ## Where to go next
 
-- [Getting started](/docs/getting-started) installs Aster and connects a model.
-- [Chat](/docs/chat) covers the TUI, keys, and slash commands.
-- [Permissions](/docs/permissions) explains the modes and the rule language.
-- [Configuration](/docs/configuration) is the complete `aster.yaml` reference.
+- [Getting started](/getting-started) installs Aster and connects a model.
+- [Chat](/chat) covers the TUI, keys, and slash commands.
+- [Permissions](/permissions) explains the modes and the rule language.
+- [Configuration](/configuration) is the complete `aster.yaml` reference.
 
 ## Where things live
 

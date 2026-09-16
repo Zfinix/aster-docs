@@ -1,6 +1,4 @@
 node_modules/
+.mintlify/
 dist/
-.astro/
-.wrangler/
-.env
-.env.*
+.DS_Store

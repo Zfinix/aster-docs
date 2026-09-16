@@ -48,7 +48,7 @@ Every model-running command also takes `--model` and
 | `/effort [level]` | Set or cycle the reasoning budget |
 | `/thinking` | Print the model's thinking in full or not |
 | `/yolo` | Toggle yolo (guardrails off, red theme) |
-| `/mom [resume]` | Show the [mom.yaml](/docs/configuration#mom-yaml-model-routing) routing state; `resume` re-arms it after a manual `/model` |
+| `/mom [resume]` | Show the [mom.yaml](/configuration#mom-yaml-model-routing) routing state; `resume` re-arms it after a manual `/model` |
 | `/resume`, `/r` | Reopen a saved session |
 | `/clear`, `/c` | Start fresh |
 | `/compact` | Fold earlier turns into a summary |

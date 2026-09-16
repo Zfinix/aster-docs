@@ -1,19 +1,7 @@
-# Aster documentation
+# aster-docs
 
-Source for https://docs.withaster.dev, built with Astro and deployed with Cloudflare Workers static assets.
+Mintlify docs for Aster, live at docs.withaster.dev.
 
-## Development
-
-```sh
-bun install
-bun run dev
-```
-
-## Publish
-
-```sh
-bun run build
-bunx wrangler deploy
-```
-
-Deployment requires access to the Cloudflare account that owns withaster.dev.
+- `mint dev` for local preview
+- `mint validate` for a strict build check
+- `bun run deploy` to export the static site and ship it to Cloudflare

@@ -56,7 +56,7 @@ rather than the shell; both work the same once loaded.
 
 | Variable | Does |
 | --- | --- |
-| `ASTER_TELEGRAM_TOKEN`, `ASTER_REMOTE_USERS` | [Remote control](/docs/remote) |
+| `ASTER_TELEGRAM_TOKEN`, `ASTER_REMOTE_USERS` | [Remote control](/remote) |
 | `ASTER_EDITOR` | Editor opened by config/edit commands |
 | `ASTER_UI_DIR` | Serve a custom UI directory |
 | `ASTER_MCP_EXTRA` | Extra MCP servers config |
