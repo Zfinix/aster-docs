@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "mint dev",
     "validate": "mint validate",
-    "deploy": "mint export && bunx wrangler deploy"
+    "export": "mint export && rm -rf dist .export_tmp && unzip -q export.zip -d .export_tmp && mv .export_tmp/dist dist && rm -rf .export_tmp && node scripts/ai.mjs",
+    "deploy": "bun run export && bunx wrangler deploy"
   }
 }

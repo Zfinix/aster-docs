@@ -19,6 +19,14 @@ lives, ask for a small change and a test, or hand it a diff to review. Everythin
 Aster does is visible: edits are gated by a permission mode you control, commands
 run in a sandbox, and every session is saved under `~/.aster`.
 
+## For AI agents
+
+Every page is machine-readable. [llms.txt](/llms.txt) indexes the whole site
+with descriptions, [llms-full.txt](/llms-full.txt) is all of it in one file,
+and appending `.md` to any page URL returns clean markdown. There is also an
+MCP server at `/mcp` (tools: `search_docs`, `get_page`) and a [SKILL.md](/SKILL.md)
+for coding agents.
+
 ## What it does
 
 - **Chats about your code** with the full repository in reach: file search,

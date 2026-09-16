@@ -1,5 +1,7 @@
 node_modules/
 .mintlify/
 dist/
+.export_tmp/
+export.zip
 .DS_Store
 .wrangler/

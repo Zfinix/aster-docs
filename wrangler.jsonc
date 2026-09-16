@@ -1,6 +1,8 @@
 {
   "name": "aster-docs",
+  "account_id": "e4a3fdbae140dc1895528888a3a723c5",
+  "main": "worker.js",
   "compatibility_date": "2026-09-01",
-  "assets": { "directory": "./dist" },
+  "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": true },
   "routes": [{ "pattern": "docs.withaster.dev", "custom_domain": true }]
 }
