@@ -8,6 +8,8 @@ questions about it, edits files, runs commands, and reviews your changes. It
 works with any OpenAI-compatible provider: OpenRouter, OpenAI, Groq, Anthropic,
 Z.ai, or a model running on your own machine.
 
+<img src="/terminal.png" alt="Aster running in the terminal, showing the session header and prompt" />
+
 One binary does all of it:
 
 ```sh
@@ -18,10 +20,6 @@ That opens a chat bound to the repository you are in. Ask where the retry logic
 lives, ask for a small change and a test, or hand it a diff to review. Everything
 Aster does is visible: edits are gated by a permission mode you control, commands
 run in a sandbox, and every session is saved under `~/.aster`.
-
-<Frame>
-  <img src="/terminal.png" alt="Aster running in the terminal, showing the session header and prompt" />
-</Frame>
 
 ## For AI agents
 
