@@ -36,26 +36,69 @@
   },
   "navigation": {
     "groups": [
-      { "group": "Start", "pages": ["index", "getting-started"] },
       {
-  "group": "Interfaces",
-  "pages": [
-    "surfaces",
-    "surfaces#terminal-tui",
-    "surfaces#one-shot-cli",
-    "surfaces#browser",
-    "surfaces#vs-code-and-cursor",
-    "surfaces#zed",
-    "surfaces#desktop",
-    "surfaces#telegram-imessage-photon",
-    "surfaces#headless-and-scheduled"
-  ]
-},
-      { "group": "Using Aster", "pages": ["chat", "sessions", "permissions", "memory"] },
-      { "group": "Extending", "pages": ["skills", "plugins", "mcp", "web"] },
-      { "group": "Automation", "pages": ["agents", "schedules", "remote", "goals"] },
-      { "group": "Workflows", "pages": ["review", "fix"] },
-      { "group": "Reference", "pages": ["configuration", "cli", "env", "troubleshooting"] }
+        "group": "Start",
+        "pages": [
+          "index",
+          "getting-started"
+        ]
+      },
+      {
+        "group": "Interfaces",
+        "pages": [
+          "surfaces#terminal-tui",
+          "surfaces#one-shot-cli",
+          "surfaces#browser",
+          "surfaces#vs-code-and-cursor",
+          "surfaces#zed",
+          "surfaces#desktop",
+          "surfaces#telegram-imessage-photon",
+          "surfaces#headless-and-scheduled"
+        ]
+      },
+      {
+        "group": "Using Aster",
+        "pages": [
+          "chat",
+          "sessions",
+          "permissions",
+          "memory"
+        ]
+      },
+      {
+        "group": "Extending",
+        "pages": [
+          "skills",
+          "plugins",
+          "mcp",
+          "web"
+        ]
+      },
+      {
+        "group": "Automation",
+        "pages": [
+          "agents",
+          "schedules",
+          "remote",
+          "goals"
+        ]
+      },
+      {
+        "group": "Workflows",
+        "pages": [
+          "review",
+          "fix"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "configuration",
+          "cli",
+          "env",
+          "troubleshooting"
+        ]
+      }
     ]
   }
 }
