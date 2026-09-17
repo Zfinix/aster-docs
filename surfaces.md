@@ -16,6 +16,27 @@ description: "Terminal, browser, VS Code, Zed, and desktop. One binary, one conf
 | iMessage | `aster remote imessage` (macOS) or `aster remote photon` |
 | Scheduled / headless | `aster run` + `aster cron` from `aster.yaml` |
 
+## Terminal TUI
+
+```sh
+aster
+```
+
+The full chat experience in your terminal: streamed replies, tool calls with
+diffs, plan approvals, themes, and slash commands. `shift+tab` cycles
+permission modes.
+
+## One-shot CLI
+
+```sh
+aster -p "why is this test failing?"
+aster review
+aster fix --findings-json findings.json --apply
+```
+
+Same agent, no interactive session. Plain text out by default when piped,
+`--json` for machine-readable output. This is the form scripts and CI use.
+
 ## Browser
 
 ```sh
