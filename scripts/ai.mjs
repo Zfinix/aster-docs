@@ -67,20 +67,39 @@ function htmlFiles(dir) {
   return out;
 }
 
+// Rewrite the hosted og:image (a 400ing mintlify.mintlify.app generator URL) to the
+// real social card. Runs on the raw file so both the HTML head and the React flight
+// payload inside <script> get the same safe replacement; the URL is fixed-size, so a
+// plain string swap cannot eat structural bytes the way a greedy regex did.
+// The URL never contains a backslash or quote, so the class stops at the closing
+// quote in HTML head and at the backslash of an escaped quote in flight payloads.
+// Consuming escapes (\\.) would run past the closing quote and truncate the
+// payload, which crashes hydration with "Connection closed".
+const ogUrl = /https:\/\/mintlify\.mintlify\.app\/_next\/image\?url=[^\\"']*/g;
+const ogHost = 'mintlify.mintlify.app/_next/image';
 for (const file of htmlFiles(dist)) {
+  let html = readFileSync(file, 'utf8');
+  let changed = false;
+  if (html.includes(ogHost)) {
+    html = html.replace(ogUrl, `${base}/social-card.png`);
+    changed = true;
+  }
   const rel = dirname(file).slice(dist.length) || '/';
   const slug = rel === '/' ? 'index' : rel.replace(/\/+$/, '').split('/').pop();
-  let html = readFileSync(file, 'utf8');
   if (!html.includes('rel="llms.txt"')) {
     const tag = `<link rel="llms.txt" href="/llms.txt"><link rel="alternate" type="text/markdown" href="/${slug}.md">`;
     html = html.replace('</head>', `${tag}</head>`);
-    writeFileSync(file, html);
+    changed = true;
   }
+  if (changed) writeFileSync(file, html);
 }
 
 // Copy static brand assets into the export (mint export drops the public/ dir).
-import { cpSync } from 'node:fs';
+import { cpSync, copyFileSync } from 'node:fs';
 cpSync(join(root, 'public'), dist, { recursive: true });
+if (existsSync(join(dist, 'favicons', 'favicon.ico'))) {
+  copyFileSync(join(dist, 'favicons', 'favicon.ico'), join(dist, 'favicon.ico'));
+}
 
 // Inject the navbar logo: the export renders an empty nav ul and no img.
 for (const file of htmlFiles(dist)) {
