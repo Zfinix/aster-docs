@@ -46,14 +46,14 @@
       {
         "group": "Interfaces",
         "pages": [
-          "surfaces#terminal-tui",
-          "surfaces#one-shot-cli",
-          "surfaces#browser",
-          "surfaces#vs-code-and-cursor",
-          "surfaces#zed",
-          "surfaces#desktop",
-          "surfaces#telegram-imessage-photon",
-          "surfaces#headless-and-scheduled"
+          "terminal-tui",
+          "one-shot-cli",
+          "browser",
+          "vscode",
+          "zed",
+          "desktop",
+          "messaging",
+          "headless"
         ]
       },
       {
