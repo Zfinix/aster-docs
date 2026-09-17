@@ -19,6 +19,10 @@ lives, ask for a small change and a test, or hand it a diff to review. Everythin
 Aster does is visible: edits are gated by a permission mode you control, commands
 run in a sandbox, and every session is saved under `~/.aster`.
 
+<Frame>
+  <img src="/terminal.png" alt="Aster running in the terminal, showing the session header and prompt" />
+</Frame>
+
 ## For AI agents
 
 Every page is machine-readable. [llms.txt](/llms.txt) indexes the whole site
