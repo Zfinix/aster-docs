@@ -11,8 +11,13 @@ Configuration is yaml, layered:
 built-in defaults       # lose
 ```
 
-Project values override global values override defaults, section by section.
-Precedence for the things that can also come from elsewhere:
+The project file wins per key, not per section: a key it leaves unset falls
+through to the global file, then to defaults. Lists merge instead of
+replacing: permission rules, MCP tool filters, and MCP servers union across
+both files, the permission mode takes the stricter of the two, and schedules
+merge by name so a repo can override one cadence without dropping the rest.
+A malformed yaml file is an error, never silently skipped. Precedence for the
+things that can also come from elsewhere:
 
 **CLI flags > environment variables > aster.yaml > defaults.**
 
@@ -26,7 +31,6 @@ aster config                          # form in a terminal, table when piped
 aster config list | get KEY | set KEY VALUE [--global|--local] | unset KEY
 aster config path | edit [--global|--local]
 aster config providers | provider [ID --model M] | models [--capabilities] | model [ID]
-aster config keys [--all] | key [VAR [VALUE]] [--local]
 
 aster key list [--all] | get VAR | set VAR [VALUE] [--stdin] [--local] | unset VAR | path
 
@@ -41,17 +45,29 @@ the fastest way to answer "why is this value what it is".
 
 ## Sections
 
-### `provider` and `model`
+### Model and endpoint
+
+The model, endpoint, and reasoning effort live under `review:`. The name is
+historical; every command reads them, chat included. `aster init`, `aster
+model use`, and `aster provider use` all write here.
 
 ```yaml
-provider: openrouter        # any OpenAI-compatible endpoint id or base URL
-model: anthropic/claude-sonnet-4.5
-effort: medium              # off|low|medium|high|xhigh|max|ultra
+review:
+  model: anthropic/claude-sonnet-4.5   # or auto, see below
+  base_url: https://openrouter.ai/api/v1
+  effort: medium        # off|low|medium|high|xhigh|max|ultra
 ```
 
-Any OpenAI-compatible endpoint works: point `provider` at a base URL and set a
-key var named for it. A key var named for the endpoint (`ANTHROPIC_API_KEY`,
-`OPENROUTER_API_KEY`) beats the shared `ASTER_API_KEY`.
+Any OpenAI-compatible endpoint works: point `base_url` at it and set a key var
+named for it. A key var named for the endpoint (`ANTHROPIC_API_KEY`,
+`OPENROUTER_API_KEY`) beats the shared `ASTER_API_KEY`. `ASTER_MODEL` and
+`ASTER_BASE_URL` outrank this file.
+
+`model: auto` picks from OpenRouter's live benchmark rankings instead of a
+fixed id (OpenRouter endpoints only). The tier comes from `ASTER_ROUTER_TIER`
+(`cheap` | `balanced` | `strong`, default `balanced`), picks are cached for a
+day in `~/.aster/model-rankings.json`, and `aster model router` shows what
+each tier resolves to.
 
 ### `permissions`
 
@@ -75,6 +91,9 @@ agent:
   max_tool_rounds: 60            # ASTER_MAX_TOOL_ROUNDS
   command_timeout_secs: 300      # ASTER_COMMAND_TIMEOUT
   compact_budget_chars: 192000   # ASTER_COMPACT_BUDGET
+  max_output_tokens: 8000        # ASTER_MAX_TOKENS; 0 lifts the cap
+  language: English              # ASTER_LANGUAGE; unset follows the user
+  learn: true                    # score finished tasks, refine learned skills
 ```
 
 ### `review`
@@ -120,6 +139,27 @@ ui:
   theme: dark          # any built-in or custom theme name
   welcome: true        # session header on launch
 ```
+
+### `mom`
+
+The switch and the file it reads; the routing policy itself lives in
+[mom.yaml](#mom-yaml-model-routing).
+
+```yaml
+mom:
+  enabled: true        # whether a mom.yaml may route each turn
+  manifest: mom.yaml   # which file to read
+```
+
+### `providers`
+
+```yaml
+providers:
+  catalog_url: https://…   # JSON of model ids per provider, pulled by `aster provider refresh`
+```
+
+Only model ids travel over this: endpoints and key vars ship in the binary and
+are never taken from a fetched file.
 
 ### `mom.yaml`: model routing per turn
 

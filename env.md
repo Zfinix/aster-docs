@@ -15,13 +15,16 @@ rather than the shell; both work the same once loaded.
 | `ASTER_BASE_URL` | Override the endpoint; outranks aster.yaml |
 | `ASTER_MODEL` | Override the model; outranks aster.yaml |
 | `ASTER_EFFORT` | Reasoning budget: off, low, medium, high, xhigh, max, ultra |
+| `ASTER_REASONING_EFFORT` | Alias for `ASTER_EFFORT` |
 | `ASTER_MAX_TOKENS` | Completion cap; `off` lifts the cap |
-| `ASTER_SEED` | Sampling seed |
+| `ASTER_SEED` | Sampling seed; `off` disables fixing it |
 | `ASTER_TIMEOUT_SECS` | Per-request timeout |
 | `ASTER_MAX_RETRIES` | Retry count for failed requests |
 | `ASTER_DEADLINE_SECS` | Whole-turn deadline |
-| `ASTER_VISION_MODEL` | Model used to describe images |
+| `ASTER_VISION_MODEL` | Model used to describe images for models that cannot see them |
 | `ASTER_PRICE_PROMPT_PER_M`, `ASTER_PRICE_COMPLETION_PER_M` | Manual pricing for cost display |
+| `ASTER_PROMPT_CACHE` | `off` disables explicit prompt-cache breakpoints |
+| `ASTER_CATALOG_URL` | Override the model catalog URL |
 
 ## Agent behavior
 
@@ -30,8 +33,14 @@ rather than the shell; both work the same once loaded.
 | `ASTER_MAX_TOOL_ROUNDS` | Cap on tool rounds per turn (default 60) |
 | `ASTER_COMMAND_TIMEOUT` | Per-command timeout in seconds (default 300) |
 | `ASTER_COMPACT_BUDGET` | Context budget that triggers compaction (default 192000 chars) |
+| `ASTER_LANGUAGE` | Language every reply is written in; unset follows the user |
 | `ASTER_GOAL_MAX_TURNS` | Cap for `/goal` loops (default 20) |
 | `ASTER_ROUTER_TIER` | `cheap`, `balanced`, or `strong` for `model: auto` |
+| `ASTER_AGENT_MAX_CONCURRENT` | Sub-agents running at the same time |
+| `ASTER_AGENT_MAX_PER_TURN` | Sub-agent fan-out allowed per turn |
+| `ASTER_AGENT_TIMEOUT` | Per-sub-agent timeout in seconds |
+| `ASTER_COLLECTOR_MODEL` | Model that merges sub-agent reports |
+| `ASTER_LEARN` | `0` turns off skill learning |
 
 ## Web and browser
 
@@ -42,6 +51,7 @@ rather than the shell; both work the same once loaded.
 | `CONTEXT_DEV_API_KEY` | Enables `crawl`, `sitemap`, `screenshot` |
 | `CLOUDFLARE_API_ID`, `CLOUDFLARE_API_TOKEN` | Alternative keys for `crawl` |
 | `ASTER_NO_BROWSER` | `1`: `open_preview` prints the URL instead of opening it |
+| `ASTER_WEBMCP_CDP_URL` | Chrome remote debugging URL for the webmcp server |
 
 ## Review
 
@@ -50,7 +60,9 @@ rather than the shell; both work the same once loaded.
 | `ASTER_VERIFY_MODEL` | Override `review.verify_model` |
 | `ASTER_HYPOTHESIS_MODEL` | Override `review.hypothesis_model` |
 | `ASTER_VERIFY_CONCURRENCY` | Parallel verifier count |
+| `ASTER_ANALYZERS` | Analyzers for review, comma separated: `semgrep`, `ast-grep`; empty means the model alone |
 | `ASTER_ASTGREP_RULES` | Extra ast-grep rules path |
+| `ASTER_REPO` | Repo name shown in review reports when none is detected |
 
 ## Runtime and misc
 

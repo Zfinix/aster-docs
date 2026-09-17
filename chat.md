@@ -22,7 +22,7 @@ aster --allow-edits                  # let a scripted turn edit files
 aster --permission-mode plan|manual|auto|edit|yolo
 ```
 
-Every model-running command also takes `--model` and
+Chat, review, and fix also take `--model` and
 `--effort off|low|medium|high|xhigh|max|ultra`.
 
 ## Keys
@@ -57,6 +57,7 @@ Every model-running command also takes `--model` and
 | `/mcp` | MCP servers and their tools; connects them if `--no-mcp` skipped it |
 | `/skills` | Pick a skill to load |
 | `/memory` | What Aster remembers here |
+| `/remember <text>` | Save a fact to memory |
 | `/theme` | Open the theme picker; previews live as you arrow through |
 | `/welcome` | Show or hide the session header, saved to `ui.welcome` |
 | `/goal <condition>` | Loop turns until a judge model says the condition is met |

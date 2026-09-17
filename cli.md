@@ -4,7 +4,7 @@ description: "Every aster subcommand, with the flags that matter."
 ---
 
 Every subcommand takes `--json` (before or after it) and turns errors into
-`{"ok":false,"error":…}`. Every command that runs a model takes `--model` and
+`{"ok":false,"error":…}`. Chat, review, and fix take `--model` and
 `--effort off|low|medium|high|xhigh|max|ultra`. `aster <cmd> --help` is the
 source of truth.
 
@@ -51,6 +51,8 @@ source of truth.
 | `aster run AGENT TASK` | One headless agent run |
 | `aster web search/extract/crawl/sitemap/screenshot` | Web as Markdown |
 | `aster memory …` | Inspect and edit memory |
+| `aster remember TEXT` | Save one fact to memory |
+| `aster learn` | Score the last turn, refine the learned skill |
 | `aster sessions …` | Session housekeeping |
 
 ## Extensions
@@ -59,6 +61,7 @@ source of truth.
 | --- | --- |
 | `aster skills …` | List, add, find, use, bundled, update, remove, init |
 | `aster plugins …` | Add, list, remove, validate |
+| `aster bots …` | Install and list published specialist bots |
 | `aster mcp …` | List, enable, disable, import, remove, login |
 
 ## Automation
