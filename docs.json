@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Aster",
-  "theme": "mint",
+  "theme": "sequoia",
   "description": "Documentation for Aster, the terminal coding agent.",
   "colors": {
     "primary": "#E8613C",
@@ -17,6 +17,22 @@
   "og": {
     "type": "website",
     "image": "https://docs.withaster.dev/social-card.png"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "assistant",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "grok",
+      "aistudio",
+      "mcp",
+      "cursor",
+      "vscode"
+    ],
+    "display": "toc"
   },
   "navigation": {
     "groups": [
