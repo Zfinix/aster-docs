@@ -1,5 +1,5 @@
 ---
-title: "Surfaces"
+title: "Interfaces"
 description: "Terminal, browser, VS Code, Zed, and desktop. One binary, one config."
 ---
 

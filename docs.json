@@ -37,11 +37,11 @@
   "navigation": {
     "groups": [
       { "group": "Start", "pages": ["index", "getting-started"] },
+      { "group": "Interfaces", "pages": ["surfaces"] },
       { "group": "Using Aster", "pages": ["chat", "sessions", "permissions", "memory"] },
       { "group": "Extending", "pages": ["skills", "plugins", "mcp", "web"] },
       { "group": "Automation", "pages": ["agents", "schedules", "remote", "goals"] },
       { "group": "Workflows", "pages": ["review", "fix"] },
-      { "group": "Surfaces", "pages": ["surfaces"] },
       { "group": "Reference", "pages": ["configuration", "cli", "env", "troubleshooting"] }
     ]
   }
