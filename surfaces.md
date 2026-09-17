@@ -5,11 +5,16 @@ description: "Terminal, browser, VS Code, Zed, and desktop. One binary, one conf
 
 | Surface | How |
 | --- | --- |
-| Terminal | `aster` |
+| Terminal TUI | `aster` (interactive chat in your terminal) |
+| One-shot CLI | `aster -p "question"`, `aster review`, `aster fix`, `aster run` |
 | Browser | `aster serve [--port 8080] [--host 0.0.0.0] [--no-open]` |
 | VS Code / Cursor | The `editors/vscode` extension |
 | Zed | `aster acp` as a custom agent server |
+| Any ACP editor | `aster acp` speaks the Agent Client Protocol on stdio |
 | Desktop | The Tauri app in `desktop/` |
+| Telegram | `aster remote telegram` |
+| iMessage | `aster remote imessage` (macOS) or `aster remote photon` |
+| Scheduled / headless | `aster run` + `aster cron` from `aster.yaml` |
 
 ## Browser
 
@@ -50,6 +55,30 @@ The extension embeds the chat in a sidebar, tab, or window.
 ```
 
 Flags: `--permission-mode`, `--model`, `--no-mcp`, `--trace`.
+
+## Desktop
+
+The Tauri app in `desktop/` wraps the same agent with a native window. It shells
+out to the `aster` binary on PATH, so `make install` keeps it current.
+
+## Telegram, iMessage, Photon
+
+`aster remote` bridges a messaging channel to the agent, so you drive it from
+your phone:
+
+- `aster remote telegram` long-polls a bot token from @BotFather, no public URL
+  needed
+- `aster remote imessage` bridges Messages.app natively (macOS only)
+- `aster remote photon` bridges iMessage through a Photon agent server with
+  signed webhooks
+
+Permission prompts arrive as buttons in the chat.
+
+## Headless and scheduled
+
+`aster run "task"` runs one agent on one task with no terminal attached, and
+`aster cron install` puts every schedule in `aster.yaml` into the OS scheduler.
+Both resolve the same config as every other surface.
 
 ## One config everywhere
 
